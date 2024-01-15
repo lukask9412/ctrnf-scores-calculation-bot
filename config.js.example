@@ -1,0 +1,14 @@
+module.exports = {
+  token: '',
+  prefix: '!',
+  lorenzi_api_url: 'https://gb.hlorenzi.com/api/v1/graphql',
+  channels: {
+    bot_spam_channel: 'bot-spam',
+    ranked_results_submissions_channel: 'results-submissions',
+    ranked_results_channel: 'results',
+    notifications_channel: 'notifications',
+    commands_allowed: [
+      'bot-spam',
+    ],
+  },
+};

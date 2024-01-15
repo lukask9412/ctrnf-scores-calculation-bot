@@ -1,0 +1,2 @@
+Country flag image files: https://github.com/hampusborgos/country-flags
+Country flag image files: https://github.com/lipis/flag-icons under the MIT license

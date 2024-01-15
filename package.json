@@ -1,0 +1,16 @@
+{
+  "name": "ctr_nf_scores_calculation_bot",
+  "version": "1.0.0",
+  "description": "CTR:NF Scores Calculation Bot",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "author": "lukask9412",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "canvas": "^2.11.2",
+    "discord.js": "^14.13.0"
+  }
+}
