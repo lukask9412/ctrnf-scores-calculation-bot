@@ -18,7 +18,7 @@ client.on('ready', () => {
 });
 
 // when message was sent
-client.on('messageCreate', (message) => {
+client.on('message', (message) => {
     // do not process bot messages
     if (message.author.bot) {
         return;
@@ -74,7 +74,7 @@ client.on('messageCreate', (message) => {
     }
 
     // allow commands only in a text channels
-    if (command.guildOnly && message.channel.type !== ChannelType.GuildText) {
+    if (command.guildOnly && message.channel.type !== "text") {
         message.delete().then(() => {
             message.channel.warn(`Commands can be used only in ${botSpamChannel} channel.`).then();
         });

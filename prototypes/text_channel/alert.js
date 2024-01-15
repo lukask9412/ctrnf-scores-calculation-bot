@@ -14,7 +14,7 @@ const TYPE_ERROR = 'error';
  * @param mentions
  * @returns null
  */
-TextChannel.prototype.alert = async function (content, type, mentions) {
+TextChannel.prototype.alert = function (content, type, mentions) {
   let messageOptions = {};
   let pings = [];
 
@@ -90,8 +90,9 @@ TextChannel.prototype.alert = async function (content, type, mentions) {
       }],
     };
 
-    await this.send(messageOptions);
-    this.send('The output was too big, therefore the message is attached as a text file.');
+    return this.send(messageOptions).then(() => {
+      this.send('The output was too big, therefore the message is attached as a text file.');
+    });
   }
 
   if (type === TYPE_PLAIN) {
@@ -102,7 +103,7 @@ TextChannel.prototype.alert = async function (content, type, mentions) {
     }
   } else {
     messageOptions.content = pings.join(', ');
-    messageOptions.embeds = [embed];
+    messageOptions.embed = embed;
   }
 
   return this.send(messageOptions);
@@ -117,7 +118,6 @@ TextChannel.prototype.info = function (content, mentions) {
 };
 
 TextChannel.prototype.success = function (content, mentions) {
-
   return this.alert(content, TYPE_SUCCESS, mentions);
 };
 

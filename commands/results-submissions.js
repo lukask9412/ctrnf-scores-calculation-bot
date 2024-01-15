@@ -3,11 +3,11 @@
 
 const client = require('../client');
 const config = require("../config");
-const Discord = require('discord.js');
+const {MessageAttachment} = require("discord.js");
 const ScoresCalculation = require('../utils/scores_calculation/scores_calculation');
 const TableParser = require('../utils/scores_calculation/table_parser');
 
-client.on('messageCreate', async (message) => {
+client.on('message', async (message) => {
     processResultsSubmission(message);
 });
 
@@ -79,8 +79,8 @@ function processResultsSubmission(message) {
         // send the generated table image
         m.delete().then(() => {
             try {
-                // send an attachment to the results channel
-                const attachment = new Discord.AttachmentBuilder(imageBuffer, {name: `${scoresCalculation.table.lobbyType}_${scoresCalculation.table.lobbyNumber}.png`});
+                // send message to the results channel
+                const attachment = new MessageAttachment(imageBuffer, `${scoresCalculation.table.lobbyType}_${scoresCalculation.table.lobbyNumber}.png`);
                 resultsChannel.send({files: [attachment]}).then((resultsChannelMessage) => {
                     // send a response message to the message author with the link to the table image
                     notificationsChannel.info(
@@ -88,6 +88,7 @@ function processResultsSubmission(message) {
                         mentions
                     );
                 });
+
             } catch (error) {
                 notificationsChannel.warn(
                     "Couldn't calculate lobby results.",

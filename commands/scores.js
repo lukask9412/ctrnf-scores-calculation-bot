@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageAttachment } = require('discord.js');
 const ScoresCalculation = require('../utils/scores_calculation/scores_calculation');
 
 module.exports = {
@@ -39,8 +39,8 @@ module.exports = {
                 // send an image with results
                 m.delete().then(() => {
                     try {
-                        const attachment = new Discord.AttachmentBuilder(imageBuffer, {name: `${scoresCalculation.table.lobbyType}_${scoresCalculation.table.lobbyNumber}.png`});
-                        message.channel.send({files: [attachment]});
+                        const attachment = new MessageAttachment(imageBuffer, `${scoresCalculation.table.lobbyType}_${scoresCalculation.table.lobbyNumber}.png`);
+                        message.channel.send({ files: [attachment] });
                     } catch (error) {
                         message.channel.warn(
                             "Couldn't calculate lobby results.",
