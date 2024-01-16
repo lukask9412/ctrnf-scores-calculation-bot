@@ -579,11 +579,15 @@ class ScoresCalculation {
      * Checks if two matches are equal
      * Matches are equal if they are on the same board, have same number, lobby type, team penalties, players and players have the same scores.
      *
-     * @param {Object} match1
-     * @param {Object} match2
+     * @param {Object|null} match1
+     * @param {Object|null} match2
      * @returns {boolean}
      */
     _areMatchesEqual = (match1, match2) => {
+        if (null === match1 || null === match2) {
+            return false;
+        }
+
         const areTeamsEqual = (teams1, teams2) => {
             if (teams1.length !== teams2.length) {
                 return false;
@@ -635,11 +639,15 @@ class ScoresCalculation {
      * Checks if two matches are duplicated.
      * Matches are duplicated if they are on the same board, have same number, lobby type and teams have same players in the same order.
      *
-     * @param {Object} match1
-     * @param {Object} match2
+     * @param {Object|null} match1
+     * @param {Object|null} match2
      * @returns {boolean}
      */
     _areMatchesDuplicated = (match1, match2) => {
+        if (null === match1 || null === match2) {
+            return false;
+        }
+
         const areTeamsDuplicates = (teams1, teams2) => {
             if (teams1.length !== teams2.length) {
                 return false;
