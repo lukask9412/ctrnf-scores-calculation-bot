@@ -20,7 +20,7 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
  *
  * @param {Message} message
  */
-function processResultsSubmission(message) {
+async function processResultsSubmission(message) {
     // do not process bot messages
     if (message && message.author && message.author.bot) {
         return;
@@ -60,8 +60,11 @@ function processResultsSubmission(message) {
         return;
     }
 
-    // Send a formatted table template in the results submissions channel and remove the old one
-    message.channel.send((mentions.length ? `<@!${mentions.join(", ")}>, ` : '') + `\`\`\`${template}\`\`\``).then(() => message.delete());
+    // Send a formatted table template in the results submissions channel
+    await message.channel.send((mentions.length ? `<@!${mentions.join(", ")}>, ` : '') + `\`\`\`${template}\`\`\``);
+
+    // remove the old message
+    await message.delete();
 
     // start of the lobby results calculation
     message.channel.info('Calculating lobby results...').then(async (m) => {
