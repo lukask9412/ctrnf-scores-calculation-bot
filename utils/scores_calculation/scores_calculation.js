@@ -448,8 +448,9 @@ class ScoresCalculation {
 
         // also push our table match into the final object of matches as well
         // only if there isn't yet
-        if (!matches.hasOwnProperty(this._template)) {
-            matches[this._template] = this._table;
+        const templateCacheKey = this._template.replace(/\s/g, ' ');
+        if (!matches.hasOwnProperty(templateCacheKey)) {
+            matches[templateCacheKey] = this._table;
         }
 
         // group matches by lobby numbers
