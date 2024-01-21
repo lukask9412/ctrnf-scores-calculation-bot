@@ -10,7 +10,6 @@ A Discord bot that calculates lobby match results for CTR:NF custom matches.
 - [Table formatting](#table-formatting)
 - [Versions](#versions)
 - [Website version](#website-version)
-- [Discord test server](#discord-test-server)
 
 ## Bot setup
 See this guide on how to set up the bot: [Bot setup](docs/bot-setup.md)
@@ -81,6 +80,3 @@ Works with discord.js v12 and discord.js v14.
 
 ## Website version
 https://ctrlobbies.com/
-
-## Discord test server
-https://discord.gg/J65jqHpj
